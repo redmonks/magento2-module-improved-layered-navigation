@@ -1,0 +1,53 @@
+<?php
+// @codingStandardsIgnoreFile
+?>
+<?php
+/**
+ * Category layered navigation state
+ *
+ * @var $block \RedMonks\ImprovedLayeredNavigation\Block\Navigation\State
+ */
+?>
+<?php $_filters = $block->getActiveFilters() ?>
+<?php if (!empty($_filters)): ?>
+<div class="filter-current" id="wp_ln_shopby" data-mage-init='{"collapsible":{"openedState": "active", "collapsible": true, "active": true }}'>
+    <strong class="block-subtitle filter-current-subtitle"
+            role="heading"
+            data-role="title"
+            aria-level="2"
+            data-count="<?= count($_filters) ?>"><?= /* @escapeNotVerified */ __('Now Shopping by') ?></strong>
+    <ol class="items" id="wp_ln_shopby_items" data-role="content">
+        <?php foreach ($_filters as $_filter): ?>
+        <?php
+            $requestVar = $_filter->getFilter()->getRequestVar();
+            $filterItemVal =  (is_array($_filter->getValue())) ? implode('-', $_filter->getValue()) : $_filter->getValue();
+            $dataAttrId = ($requestVar != 'cat') ? $_filter->getFilter()->getAttributeModel()->getAttributeId() . '_' . $filterItemVal : '0_'.$filterItemVal;
+            ?>
+            <li class="item" data-attr-id="<?= /* @escapeNotVerified */ $block->escapeHtml($dataAttrId) ?>">
+                <span class="filter-label"><?= $block->escapeHtml(__($_filter->getName())) ?></span>
+                <span class="filter-value"><?= /* @escapeNotVerified */ $block->stripTags($_filter->getLabel()) ?></span>
+                <?php
+                $clearLinkUrl = $_filter->getClearLinkUrl();
+                $currentFilterName = $block->escapeHtml(__($_filter->getName())) . " " . $block->stripTags($_filter->getLabel());
+                if ($clearLinkUrl):
+                    ?>
+                    <a class="action previous" href="<?= /* @escapeNotVerified */ $_filter->getRemoveUrl() ?>"
+                       title="<?= /* @escapeNotVerified */ __('Previous') ?>">
+                        <span><?= /* @escapeNotVerified */ __('Previous') ?></span>
+                    </a>
+                    <a class="action remove"
+                       title="<?= $block->escapeHtml($_filter->getFilter()->getClearLinkText()) ?>"
+                       href="<?= /* @escapeNotVerified */ $clearLinkUrl ?>">
+                        <span><?= $block->escapeHtml($_filter->getFilter()->getClearLinkText()) ?></span>
+                    </a>
+                <?php else: ?>
+                    <a class="action remove" href="<?= /* @escapeNotVerified */ $_filter->getRemoveUrl() ?>"
+                       title="<?= /* @escapeNotVerified */ $block->escapeHtml(__('Remove')) . " " . $currentFilterName ?>">
+                        <span><?= /* @escapeNotVerified */ __('Remove This Item') ?></span>
+                    </a>
+                <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ol>
+</div>
+<?php endif; ?>

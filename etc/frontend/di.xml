@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <virtualType name="RedMonks\ImprovedLayeredNavigation\Block\Navigation\Category"
+                 type="RedMonks\ImprovedLayeredNavigation\Block\Navigation">
+        <arguments>
+            <argument name="filterList" xsi:type="object">categoryFilterList</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="RedMonks\ImprovedLayeredNavigation\Block\Navigation\Search"
+                 type="RedMonks\ImprovedLayeredNavigation\Block\Navigation">
+        <arguments>
+            <argument name="filterList" xsi:type="object">searchFilterList</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- @api -->
+    <virtualType name="Magento\LayeredNavigationStaging\Block\Navigation\Category"
+                 type="RedMonks\ImprovedLayeredNavigation\Block\Navigation">
+        <arguments>
+            <argument name="filterList" xsi:type="object">categoryFilterList</argument>
+        </arguments>
+    </virtualType>
+    <!-- @api -->
+    <virtualType name="Magento\LayeredNavigationStaging\Block\Navigation\Search"
+                 type="RedMonks\ImprovedLayeredNavigation\Block\Navigation">
+        <arguments>
+            <argument name="filterList" xsi:type="object">searchFilterList</argument>
+        </arguments>
+    </virtualType>
+
+    <preference for="Magento\LayeredNavigation\Block\Navigation\Category"
+                type="RedMonks\ImprovedLayeredNavigation\Block\Navigation\Category"/>
+
+    <preference for="Magento\LayeredNavigation\Block\Navigation\FilterRenderer"
+                type="RedMonks\ImprovedLayeredNavigation\Block\Navigation\FilterRenderer"/>
+
+    <preference for="Magento\LayeredNavigation\Block\Navigation\State"
+                type="RedMonks\ImprovedLayeredNavigation\Block\Navigation\State"/>
+
+    <preference for="Magento\Swatches\Block\LayeredNavigation\RenderLayered"
+                type="RedMonks\ImprovedLayeredNavigation\Block\LayeredNavigation\RenderLayered"/>
+
+    <preference for="Magento\Catalog\Model\ResourceModel\Layer\Filter\Attribute"
+                type="RedMonks\ImprovedLayeredNavigation\Model\ResourceModel\Layer\Filter\Attribute"/>
+
+    <type name="Magento\Catalog\Controller\Category\View">
+        <plugin name="RedMonks_ImprovedLayeredNavigation_Ajax_Category_View"
+                type="RedMonks\ImprovedLayeredNavigation\Plugin\Category\View"></plugin>
+    </type>
+
+    <type name="Magento\CatalogSearch\Controller\Result\Index">
+        <plugin name="RedMonks_ImprovedLayeredNavigation_Ajax_CategorSearch_Result"
+                type="RedMonks\ImprovedLayeredNavigation\Plugin\CatalogSearch\ResultView"></plugin>
+    </type>
+
+    <type name="Magento\Catalog\Model\Layer\FilterList">
+        <plugin name="RedMonks_ImprovedLayeredNavigation_Filter_List"
+                type="RedMonks\ImprovedLayeredNavigation\Plugin\Layer\FilterList"></plugin>
+    </type>
+
+    <type name="Magento\Catalog\Model\Layer\Filter\Item">
+        <plugin name="RedMonks_ImprovedLayeredNavigation_Item_Url"
+                type="RedMonks\ImprovedLayeredNavigation\Plugin\Model\Layer\Filter\Item" sortOrder="1"/>
+    </type>
+
+    <type name="Magento\Swatches\Block\LayeredNavigation\RenderLayered">
+        <plugin name="RedMonks_ImprovedLayeredNavigation_Swatches_RenderLayered"
+                type="RedMonks\ImprovedLayeredNavigation\Plugin\Swatches\RenderLayered" sortOrder="1"/>
+    </type>
+
+</config>

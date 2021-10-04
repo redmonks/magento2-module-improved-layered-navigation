@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <attribute name="class" value="page-products"/>
+
+        <referenceContainer name="sidebar.main">
+            <block class="RedMonks\ImprovedLayeredNavigation\Block\Navigation\Search" name="catalogsearch.leftnav" before="-" template="RedMonks_ImprovedLayeredNavigation::layer/view.phtml">
+                <block class="RedMonks\ImprovedLayeredNavigation\Block\Navigation\State" name="catalogsearch.navigation.state" as="state" />
+                <block class="RedMonks\ImprovedLayeredNavigation\Block\Navigation\FilterRenderer" name="catalogsearch.navigation.renderer" as="renderer" template="RedMonks_ImprovedLayeredNavigation::layer/filter.phtml"/>
+            </block>
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="wp.layer.search.result" template="RedMonks_ImprovedLayeredNavigation::search_products.phtml" />
+        </referenceContainer>
+        <move element="search.result" destination="wp.layer.search.result"/>
+
+        <referenceContainer name="before.body.end">
+            <block
+                    ifconfig="redmonks_improvedlayerednavigation/general/enable"
+                    class="RedMonks\ImprovedLayeredNavigation\Block\LayeredNavigationAdd"
+                    name="layerednavigationadd"
+                    template="RedMonks_ImprovedLayeredNavigation::layerednavigationadd.phtml"
+            />
+        </referenceContainer>
+
+    </body>
+</page>
+

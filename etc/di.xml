@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="categoryFilterList" type="Magento\Catalog\Model\Layer\FilterList">
+        <arguments>
+            <argument name="filters" xsi:type="array">
+                <item name="attribute" xsi:type="string">RedMonks\ImprovedLayeredNavigation\Model\Layer\Filter\Attribute</item>
+                <item name="price" xsi:type="string">RedMonks\ImprovedLayeredNavigation\Model\Layer\Filter\Price</item>
+                <item name="category" xsi:type="string">RedMonks\ImprovedLayeredNavigation\Model\Layer\Filter\Category</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="searchFilterList" type="Magento\Catalog\Model\Layer\FilterList">
+        <arguments>
+            <argument name="filters" xsi:type="array">
+                <item name="attribute" xsi:type="string">RedMonks\ImprovedLayeredNavigation\Model\Layer\Filter\Attribute</item>
+                <item name="price" xsi:type="string">RedMonks\ImprovedLayeredNavigation\Model\Layer\Filter\Price</item>
+                <item name="category" xsi:type="string">RedMonks\ImprovedLayeredNavigation\Model\Layer\Filter\Category</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <preference for="Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection"
+                type="RedMonks\ImprovedLayeredNavigation\Model\ResourceModel\Fulltext\Collection" />
+    <virtualType name="Magento\CatalogSearch\Model\ResourceModel\Fulltext\CollectionFactory"
+                 type="Magento\Catalog\Model\ResourceModel\Product\CollectionFactory">
+        <arguments>
+            <argument name="instanceName" xsi:type="string">RedMonks\ImprovedLayeredNavigation\Model\ResourceModel\Fulltext\Collection</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Magento\CatalogSearch\Model\ResourceModel\Fulltext\SearchCollection"
+                 type="RedMonks\ImprovedLayeredNavigation\Model\ResourceModel\Fulltext\Collection">
+        <arguments>
+            <argument name="searchRequestName" xsi:type="string">quick_search_container</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Since M-2.3.2 -->
+    <type name="Magento\Catalog\Model\Layer\Search">
+        <arguments>
+            <argument name="context" xsi:type="object">Magento\CatalogSearch\Model\Layer\Search\Context</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Model\Layer\Category">
+        <arguments>
+            <argument name="context" xsi:type="object">Magento\CatalogSearch\Model\Layer\Category\Context</argument>
+        </arguments>
+    </type>
+    <!-- End since -->
+</config>

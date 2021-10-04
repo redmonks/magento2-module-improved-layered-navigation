@@ -1,24 +1,32 @@
 <?xml version="1.0"?>
 
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="redmonks" translate="label" sortOrder="401">
+        <tab id="redmonks" translate="label" sortOrder="2000">
             <label>RedMonks</label>
         </tab>
-        <section id="layered_navigation" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
-            <class>separator-top</class>
-            <label>Ajax Layered Navigation</label>
+        <section id="redmonks_improvedlayerednavigation" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="210"
+                 translate="label">
+            <label>Layered Navigation</label>
             <tab>redmonks</tab>
-            <resource>RedMonks_ImprovedLayeredNavigation::configuration</resource>
-            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>General Configuration</label>
-                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Layered Navigation Enable</label>
+            <resource>RedMonks_ImprovedLayeredNavigation::ImprovedLayeredNavigation</resource>
+
+            <group id="general" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <label>General Settings</label>
+                <field id="enable" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label"
+                       type="select">
+                    <label>Enable Layered Navigation</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="ajax_enable" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Enable</label>
+                <field id="ajax" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="30"
+                       translate="label" type="select">
+                    <label>Enable Ajax</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable Ajax Layered Navigation.</comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
                 </field>
             </group>
         </section>
