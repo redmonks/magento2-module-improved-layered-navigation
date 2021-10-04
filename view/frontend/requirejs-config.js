@@ -1,7 +1,7 @@
 var config = {
     map: {
         '*': {
-            wpFilterSelect: 'WeltPixel_LayeredNavigation/js/wpFilterSelect'
+            wpFilterSelect: 'RedMonks_ImprovedLayeredNavigation/js/wpFilterSelect'
         }
     }
 };
