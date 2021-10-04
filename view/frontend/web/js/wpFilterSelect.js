@@ -12,7 +12,8 @@ define([
                     var filterSwatchElem = $('#wp_ln_swatch_attr_' + id);
 
                     if(filterElem.length) {
-                        filterElem.addClass('wp-ln-selected');
+                        //filterElem.addClass('wp-ln-selected');
+                        filterElem.find('.rm_checkbox').prop('checked',true)
                     }
 
                     if(filterSwatchElem.length) {

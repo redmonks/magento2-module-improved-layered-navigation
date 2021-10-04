@@ -15,6 +15,7 @@
                 <a href="<?= $block->escapeUrl($filterItem->getUrl()) ?>"
                    data-opt-path="<?= /* @escapeNotVerified */ $block->escapeHtmlAttr($dataOptPath) ?>"
                     data-is-multi="<?= $isMulti?>">
+                    <?php echo $isMulti ? '<input type="checkbox" class="rm_checkbox">' : ''; ?>
                     <?= /* @escapeNotVerified */ $filterItem->getLabel() ?>
                     <?php if ($canShowQty): ?>
                         <span class="count"><?= /* @escapeNotVerified */ $filterItem->getCount() ?><span class="filter-count-label">
