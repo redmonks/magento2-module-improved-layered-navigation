@@ -121,7 +121,7 @@ class Item
      */
     public function aroundGetUrl(\Magento\Catalog\Model\Layer\Filter\Item $item, $proceed)
     {
-        if (!$this->_wpHelper->isEnabled() || $this->_wpHelper->isAjaxEnabled()) {
+        if (!$this->_wpHelper->isEnabled()) {
             return $proceed();
         }
 

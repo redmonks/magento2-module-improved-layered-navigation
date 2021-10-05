@@ -1,0 +1,16 @@
+{
+    "name": "redmonks/module-improved-layered-navigation",
+    "description": "Magento 2 Improved Layered Navigation",
+    "type": "magento2-module",
+    "license": [
+        "MIT"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "RedMonks\\ImprovedLayeredNavigation\\": ""
+        }
+    }
+}
