@@ -1,12 +1,12 @@
 <?php
-
 namespace RedMonks\ImprovedLayeredNavigation\Model\ResourceModel\AttributeOptions;
 
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
-class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+class Collection extends AbstractCollection
 {
     protected $_idFieldName = 'id';
-    protected $_eventPrefix = 'redmonks_ln_atribute_options_collection';
+    protected $_eventPrefix = 'redmonks_atribute_options_collection';
     protected $_eventObject = 'attribute_options_collection';
 
     /**
@@ -16,7 +16,10 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     protected function _construct()
     {
-        $this->_init('RedMonks\ImprovedLayeredNavigation\Model\AttributeOptions', 'RedMonks\ImprovedLayeredNavigation\Model\ResourceModel\AttributeOptions');
+        $this->_init(
+            'RedMonks\ImprovedLayeredNavigation\Model\AttributeOptions',
+            'RedMonks\ImprovedLayeredNavigation\Model\ResourceModel\AttributeOptions'
+        );
     }
 
 }

@@ -1,23 +1,13 @@
 <?php
-
 namespace RedMonks\ImprovedLayeredNavigation\Model\ResourceModel;
 
-class AttributeOptions extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
-{
-    /**
-     * AttributeOptions constructor.
-     * @param \Magento\Framework\Model\ResourceModel\Db\Context $context
-     */
-    public function __construct(
-        \Magento\Framework\Model\ResourceModel\Db\Context $context
-    )
-    {
-        parent::__construct($context);
-    }
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
+class AttributeOptions extends AbstractDb
+{
     protected function _construct()
     {
-        $this->_init('redmonks_ln_attribute_options', 'id');
+        $this->_init('redmonks_attribute_options', 'id');
     }
 
     /**
@@ -38,7 +28,7 @@ class AttributeOptions extends \Magento\Framework\Model\ResourceModel\Db\Abstrac
 
         $select = $connection->select()->from(
             $this->getMainTable(),
-            [$this->getIdFieldName(), 'attribute_id', 'display_option', 'visible_options', 'visible_options_step']
+            [$this->getIdFieldName(), 'attribute_id', 'display_option', 'is_multiselect']
         )->where(
             'attribute_id = :attribute_id'
         );

@@ -34,31 +34,25 @@
     <preference for="Magento\LayeredNavigation\Block\Navigation\Category"
                 type="RedMonks\ImprovedLayeredNavigation\Block\Navigation\Category"/>
 
-    <preference for="Magento\LayeredNavigation\Block\Navigation\FilterRenderer"
-                type="RedMonks\ImprovedLayeredNavigation\Block\Navigation\FilterRenderer"/>
-
-    <preference for="Magento\LayeredNavigation\Block\Navigation\State"
-                type="RedMonks\ImprovedLayeredNavigation\Block\Navigation\State"/>
-
     <preference for="Magento\Swatches\Block\LayeredNavigation\RenderLayered"
                 type="RedMonks\ImprovedLayeredNavigation\Block\LayeredNavigation\RenderLayered"/>
 
-    <preference for="Magento\Catalog\Model\ResourceModel\Layer\Filter\Attribute"
-                type="RedMonks\ImprovedLayeredNavigation\Model\ResourceModel\Layer\Filter\Attribute"/>
+<!--    <preference for="Magento\Catalog\Model\ResourceModel\Layer\Filter\Attribute"-->
+<!--                type="RedMonks\ImprovedLayeredNavigation\Model\ResourceModel\Layer\Filter\Attribute"/>-->
 
     <type name="Magento\Catalog\Controller\Category\View">
         <plugin name="RedMonks_ImprovedLayeredNavigation_Ajax_Category_View"
-                type="RedMonks\ImprovedLayeredNavigation\Plugin\Category\View"></plugin>
+                type="RedMonks\ImprovedLayeredNavigation\Plugin\Category\View"/>
     </type>
 
     <type name="Magento\CatalogSearch\Controller\Result\Index">
         <plugin name="RedMonks_ImprovedLayeredNavigation_Ajax_CategorSearch_Result"
-                type="RedMonks\ImprovedLayeredNavigation\Plugin\CatalogSearch\ResultView"></plugin>
+                type="RedMonks\ImprovedLayeredNavigation\Plugin\CatalogSearch\ResultView"/>
     </type>
 
     <type name="Magento\Catalog\Model\Layer\FilterList">
         <plugin name="RedMonks_ImprovedLayeredNavigation_Filter_List"
-                type="RedMonks\ImprovedLayeredNavigation\Plugin\Layer\FilterList"></plugin>
+                type="RedMonks\ImprovedLayeredNavigation\Plugin\Layer\FilterList"/>
     </type>
 
     <type name="Magento\Catalog\Model\Layer\Filter\Item">
@@ -69,6 +63,10 @@
     <type name="Magento\Swatches\Block\LayeredNavigation\RenderLayered">
         <plugin name="RedMonks_ImprovedLayeredNavigation_Swatches_RenderLayered"
                 type="RedMonks\ImprovedLayeredNavigation\Plugin\Swatches\RenderLayered" sortOrder="1"/>
+    </type>
+    <type name="\Magento\LayeredNavigation\Block\Navigation\State">
+        <plugin sortOrder="1" name="redMonksImprovedLayeredNavigationState"
+                type="RedMonks\ImprovedLayeredNavigation\Plugin\Block\LayerNavState"/>
     </type>
 
 </config>

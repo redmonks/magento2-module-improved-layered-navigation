@@ -2,7 +2,7 @@
     "name": "redmonks/module-improved-layered-navigation",
     "description": "Magento 2 Improved Layered Navigation",
     "type": "magento2-module",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": [
         "MIT"
     ],

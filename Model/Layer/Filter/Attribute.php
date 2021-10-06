@@ -223,17 +223,9 @@ class Attribute extends AbstractFilter
 
 
         if ($checkCount) {
-            if ($wpLnAttributeOptions->getSortBy() == 2) {
-                usort($itemData, [$this, '_compareAz']);
-                $sorted = true;
-            }
             foreach ($itemData as $item) {
                 $this->itemDataBuilder->addItemData($item['label'], $item['value'], $item['count']);
             }
-        }
-
-        if ($wpLnAttributeOptions->getSortBy() == 2 && !$sorted) {
-            usort($options, [$this, '_compareAz']);
         }
         return $this->itemDataBuilder->build();
     }
@@ -252,15 +244,4 @@ class Attribute extends AbstractFilter
 
         return $isMultiselect;
     }
-
-    /**
-     * @param $a
-     * @param $b
-     * @return int
-     */
-    protected function _compareAz($a, $b)
-    {
-        return strcmp($a["label"], $b["label"]);
-    }
-
 }

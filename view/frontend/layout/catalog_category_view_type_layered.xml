@@ -13,6 +13,9 @@
             <action method="setTemplate" ifconfig="redmonks_improvedlayerednavigation/general/enable">
                 <argument name="template" xsi:type="string">RedMonks_ImprovedLayeredNavigation::layer/filter.phtml</argument>
             </action>
+            <arguments>
+                <argument name="custom_product_layer_view_model" xsi:type="object">RedMonks\ImprovedLayeredNavigation\ViewModel\Layer\Filter</argument>
+            </arguments>
         </referenceBlock>
 
         <referenceContainer name="content">

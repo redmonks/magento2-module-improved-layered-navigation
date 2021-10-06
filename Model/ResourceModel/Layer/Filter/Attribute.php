@@ -1,6 +1,8 @@
 <?php
-
 namespace RedMonks\ImprovedLayeredNavigation\Model\ResourceModel\Layer\Filter;
+
+use Magento\Catalog\Model\Layer\Filter\FilterInterface;
+use Magento\Framework\DB\Select;
 
 class Attribute extends \Magento\Catalog\Model\ResourceModel\Layer\Filter\Attribute
 {
@@ -8,11 +10,11 @@ class Attribute extends \Magento\Catalog\Model\ResourceModel\Layer\Filter\Attrib
     /**
      * Retrieve array with products counts per attribute option
      *
-     * @param \Magento\Catalog\Model\Layer\Filter\FilterInterface $filter
+     * @param FilterInterface $filter
      * @throws \Magento\Framework\Exception\LocalizedException
      * @return array
      */
-    public function getCount(\Magento\Catalog\Model\Layer\Filter\FilterInterface $filter)
+    public function getCount(FilterInterface $filter)
     {
         // clone select from collection with filters
         $layer = $filter->getLayer();
@@ -24,10 +26,10 @@ class Attribute extends \Magento\Catalog\Model\ResourceModel\Layer\Filter\Attrib
 
         $select = clone $collectionSelect;
         // reset columns, order and limitation conditions
-        $select->reset(\Magento\Framework\DB\Select::COLUMNS);
-        $select->reset(\Magento\Framework\DB\Select::ORDER);
-        $select->reset(\Magento\Framework\DB\Select::LIMIT_COUNT);
-        $select->reset(\Magento\Framework\DB\Select::LIMIT_OFFSET);
+        $select->reset(Select::COLUMNS);
+        $select->reset(Select::ORDER);
+        $select->reset(Select::LIMIT_COUNT);
+        $select->reset(Select::LIMIT_OFFSET);
 
         $connection = $this->getConnection();
         $attribute = $filter->getAttributeModel();

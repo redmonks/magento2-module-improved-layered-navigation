@@ -147,7 +147,7 @@ class Item
         $requestVarValue = implode(",", $requestVarValue);
 
         $query = [
-            $filter->getRequestVar() => $requestVarValue,
+            $filter->getRequestVar() => $requestVarValue?:$filter->getResetValue(),
             $this->_htmlPagerBlock->getPageVarName() => null,
         ];
         return $this->_url->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true, '_query' => $query]);

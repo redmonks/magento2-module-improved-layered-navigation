@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
-
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="product_attribute_form_build_front_tab">
-        <observer name="rm_improvedlayeredNavigation" instance="RedMonks\ImprovedLayeredNavigation\Observer\Edit\Tab\Front\WpProductAttributeFormBuildFrontTabObserver" />
+        <observer name="rm_improvedlayeredNavigation" instance="RedMonks\ImprovedLayeredNavigation\Observer\Edit\Tab\Front\ProductAttributeFormBuildFrontTab" />
     </event>
     <event name="catalog_entity_attribute_save_after">
-        <observer name="rm_improvedlayeredNavigation_attribute_options" instance="RedMonks\ImprovedLayeredNavigation\Observer\WpCatalogAttributeSaveAfterObserver" />
+        <observer name="rm_improvedlayeredNavigation_attribute_options" instance="RedMonks\ImprovedLayeredNavigation\Observer\ProductAttributeSaveAfter" />
     </event>
 </config>

@@ -6,8 +6,13 @@
 
         <referenceContainer name="sidebar.main">
             <block class="RedMonks\ImprovedLayeredNavigation\Block\Navigation\Search" name="catalogsearch.leftnav" before="-" template="RedMonks_ImprovedLayeredNavigation::layer/view.phtml">
-                <block class="RedMonks\ImprovedLayeredNavigation\Block\Navigation\State" name="catalogsearch.navigation.state" as="state" />
-                <block class="RedMonks\ImprovedLayeredNavigation\Block\Navigation\FilterRenderer" name="catalogsearch.navigation.renderer" as="renderer" template="RedMonks_ImprovedLayeredNavigation::layer/filter.phtml"/>
+                <block class="Magento\LayeredNavigation\Block\Navigation\State" name="catalogsearch.navigation.state" as="state" />
+                <block class="Magento\LayeredNavigation\Block\Navigation\FilterRenderer" name="catalogsearch.navigation.renderer" as="renderer" template="RedMonks_ImprovedLayeredNavigation::layer/filter.phtml">
+                    <arguments>
+                        <argument name="product_layer_view_model" xsi:type="object">Magento\LayeredNavigation\ViewModel\Layer\Filter</argument>
+                        <argument name="custom_product_layer_view_model" xsi:type="object">RedMonks\ImprovedLayeredNavigation\ViewModel\Layer\Filter</argument>
+                    </arguments>
+                </block>
             </block>
         </referenceContainer>
 
