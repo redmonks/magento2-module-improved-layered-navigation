@@ -1,5 +1,4 @@
 <?php
-
 namespace RedMonks\ImprovedLayeredNavigation\Block\Navigation;
 
 use Magento\Framework\View\Element\Template;

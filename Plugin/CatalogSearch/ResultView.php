@@ -57,16 +57,6 @@ class ResultView
      */
     protected $_wpHelper;
 
-    /**
-     * ResultView constructor.
-     * @param StoreManagerInterface $storeManager
-     * @param QueryFactory $queryFactory
-     * @param Resolver $layerResolver
-     * @param JsonFactory $resultJsonFactory
-     * @param PageFactory $resultPageFactory
-     * @param CatalogSearchHelper $catalogSearchHelper
-     * @param WpHelper $wpHelper
-     */
     public function __construct(
         StoreManagerInterface $storeManager,
         QueryFactory $queryFactory,

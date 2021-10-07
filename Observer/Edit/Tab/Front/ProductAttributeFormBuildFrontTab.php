@@ -38,15 +38,6 @@ class ProductAttributeFormBuildFrontTab implements ObserverInterface
      */
     protected $_attributeModel;
 
-    /**
-     * WpProductAttributeFormBuildFrontTabObserver constructor.
-     * @param Manager $moduleManager
-     * @param Source\Yesno $optionList
-     * @param Http $request
-     * @param AttributeOptions $wpModel
-     * @param Attribute $attributeModel
-     * @throws \Magento\Framework\Exception\LocalizedException
-     */
     public function __construct(
         Manager $moduleManager,
         Source\Yesno $optionList,

@@ -137,7 +137,6 @@ class Navigation extends \Magento\LayeredNavigation\Block\Navigation
                     if($attributeId) {
                         $wpOptions = $this->getWpAttributeOptions($attributeId);
                         if($wpOptions->getData()) {
-
                             if($wpOptions->getDisplayOption() == '1' || $wpOptions->getDisplayOption() == '2') {
                                 $activeFilters[] = $ctr;
                             }
@@ -146,7 +145,6 @@ class Navigation extends \Magento\LayeredNavigation\Block\Navigation
                     $ctr++;
                 }
             }
-
         }
 
         $activeFiltersStr = implode(' ', $activeFilters);

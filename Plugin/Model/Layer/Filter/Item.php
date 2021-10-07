@@ -22,14 +22,6 @@ class Item
      */
     protected $_filterModel;
 
-    /**
-     * Item constructor.
-     * @param \Magento\Framework\UrlInterface $url
-     * @param \Magento\Theme\Block\Html\Pager $htmlPagerBlock
-     * @param \Magento\Framework\App\RequestInterface $request
-     * @param LayerHelper $_wpHelper
-     * @param FilterModel $filterModel
-     */
     public function __construct(
         \Magento\Framework\UrlInterface $url,
         \Magento\Theme\Block\Html\Pager $htmlPagerBlock,
