@@ -49,12 +49,6 @@
         <plugin name="RedMonks_ImprovedLayeredNavigation_Ajax_CategorSearch_Result"
                 type="RedMonks\ImprovedLayeredNavigation\Plugin\CatalogSearch\ResultView"/>
     </type>
-
-    <type name="Magento\Catalog\Model\Layer\FilterList">
-        <plugin name="RedMonks_ImprovedLayeredNavigation_Filter_List"
-                type="RedMonks\ImprovedLayeredNavigation\Plugin\Layer\FilterList"/>
-    </type>
-
     <type name="Magento\Catalog\Model\Layer\Filter\Item">
         <plugin name="RedMonks_ImprovedLayeredNavigation_Item_Url"
                 type="RedMonks\ImprovedLayeredNavigation\Plugin\Model\Layer\Filter\Item" sortOrder="1"/>

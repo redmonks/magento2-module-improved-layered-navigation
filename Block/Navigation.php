@@ -87,13 +87,6 @@ class Navigation extends \Magento\LayeredNavigation\Block\Navigation
         $this->_attributeOptions = $attributeOptions;
         parent::__construct($context, $layerResolver, $filterList, $visibilityFlag, $data);
     }
-    /**
-     * @return mixed
-     */
-    public function isCategoryFilterVisible()
-    {
-        return $this->_wpHelper->showCategoriesBlock();
-    }
 
     /**
      * @return mixed
@@ -112,14 +105,6 @@ class Navigation extends \Magento\LayeredNavigation\Block\Navigation
     public function isCategoryFilter($filter)
     {
         return ($filter->getRequestVar() == 'cat') ? true : false;
-    }
-
-    /**
-     * @return \Magento\Framework\Phrase|string
-     */
-    public function getFilterButtonHtml()
-    {
-        return $this->_wpHelper->getFilterButtonStyle();
     }
 
     /**

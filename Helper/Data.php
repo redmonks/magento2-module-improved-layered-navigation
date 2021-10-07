@@ -1,20 +1,25 @@
 <?php
 namespace RedMonks\ImprovedLayeredNavigation\Helper;
 
+use Magento\Framework\App\Helper\AbstractHelper;
+use Magento\Framework\App\Helper\Context;
+use Magento\Framework\View\Page\Config;
 use Magento\Store\Model\ScopeInterface;
 use \Magento\CatalogSearch\Model\ResourceModel\EngineInterface;
+use Magento\Store\Model\StoreManagerInterface;
 
-class Data extends \Magento\Framework\App\Helper\AbstractHelper
+class Data extends AbstractHelper
 {
     const FILTER_TYPE_SLIDER = 'slider';
     const FILTER_TYPE_LIST = 'list';
     const SLIDE_IN_STYLE = 1;
-    const FILTER_BUTTON_LABEL = 'Filter';
+    const CONFIG_IS_ENABLE = 'redmonks_improvedlayerednavigation/general/enable';
+    const CONFIG_IS_ENABLE_AJAX = 'redmonks_improvedlayerednavigation/general/ajax';
 
     protected $_currentEngine = '';
 
     /**
-     * @var \Magento\Store\Model\StoreManagerInterface
+     * @var StoreManagerInterface
      */
     protected $_storeManager;
 
@@ -28,22 +33,14 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     private $pageConfig;
 
-
-    /**
-     * Data constructor.
-     * @param \Magento\Framework\App\Helper\Context $context
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     */
     public function __construct(
-        \Magento\Framework\App\Helper\Context $context,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Framework\View\Page\Config $pageConfig
-    )
-    {
+        Context $context,
+        StoreManagerInterface $storeManager,
+        Config $pageConfig
+    ) {
         $this->_storeManager = $storeManager;
         $this->pageConfig = $pageConfig;
         parent::__construct($context);
-
         $this->_storeId = $this->getCurrentStoreId();
     }
 
@@ -63,7 +60,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function isEnabled($storeId = null)
     {
-        return true;
+        return $this->scopeConfig->getValue(self::CONFIG_IS_ENABLE,ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
@@ -72,80 +69,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function isAjaxEnabled($storeId = null)
     {
-        return true;
-    }
-
-    /**
-     * @param int $storeId
-     * @return mixed
-     */
-    public function showCategoriesBlock($storeId = null)
-    {
-        return true;
-    }
-
-    /**
-     * @param int $storeId
-     * @return mixed
-     */
-    public function showCompareBlock($storeId = null)
-    {
-        return true;
-    }
-
-    /**
-     * @param int $storeId
-     * @return mixed
-     */
-    public function showWishlistBlock($storeId = null)
-    {
-        return true;
-    }
-
-    /**
-     * @param int $storeId
-     * @return mixed
-     */
-    public function showRecentlyOrderedBlock($storeId = null)
-    {
-        return true;
-    }
-
-    /**
-     * @param null $storeId
-     * @return mixed
-     */
-    public function getFilterButton($storeId = null)
-    {
-        return true;
-    }
-
-    /**
-     * Filter Button option
-     *  0-icon only
-     *  1-icon & label
-     *  2-label only
-     *
-     * @return \Magento\Framework\Phrase|string
-     */
-    public function getFilterButtonStyle()
-    {
-        switch ($this->getFilterButton()) {
-            case 0:
-                $filterButtonHtml = "<b class='wp-slide-in'></b>";
-                break;
-            case 1:
-                $filterButtonHtml = "<b class='wp-slide-in'></b><b class='wp-filters-text'>" . /* @escapeNotVerified */
-                    __(self::FILTER_BUTTON_LABEL) . "</b>";
-                break;
-            case 2:
-                $filterButtonHtml = __(self::FILTER_BUTTON_LABEL);
-                break;
-            default:
-                $filterButtonHtml = '';
-        }
-
-        return $filterButtonHtml;
+        return $this->scopeConfig->getValue(self::CONFIG_IS_ENABLE_AJAX, ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
@@ -162,7 +86,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             || $this->_currentEngine == 'elasticsearch6'  || $this->_currentEngine == 'elasticsearch7' ) {
             return true;
         }
-
         return false;
     }
 

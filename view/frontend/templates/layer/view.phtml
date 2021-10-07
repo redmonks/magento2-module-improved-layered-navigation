@@ -15,10 +15,7 @@
 $isAjaxMode = $block->isAjaxMode();
 $jsClass = ($isAjaxMode) ? 'RedMonks_ImprovedLayeredNavigation/js/product/list/toolbar' : false;
 ?>
-<div class="wp-filters <?php if ($isAjaxMode) echo 'wp-filters-ajax' ?>">
-    <?= /* @escapeNotVerified */
-    $block->getFilterButtonHtml() ?>
-</div>
+<div class="wp-filters <?php if ($isAjaxMode) echo 'wp-filters-ajax' ?>"></div>
 <?php if ($block->canShowBlock()): ?>
     <div class="block filter" id="layered-filter-block"
          data-mage-init='{"collapsible":{"openedState": "active", "collapsible": true, "active": false, "collateral": { "openedState": "filter-active", "element": "body" } }}'>
